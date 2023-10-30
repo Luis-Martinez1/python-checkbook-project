@@ -1,1 +1,1 @@
-This will be ignored by github.
+Any file name within this .gitignore will be ignored by github when executing a git status.
