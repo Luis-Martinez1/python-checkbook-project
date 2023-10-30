@@ -1,1 +1,1 @@
-# python-checkbook-project
+This repository exists to demonstrate a command line checkbook application that allows users to track their finances with a command line interface.# python-checkbook-project
