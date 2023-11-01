@@ -1,4 +1,3 @@
-
 import os
 
 # Welcome message and numbered options 
@@ -15,24 +14,25 @@ def welcome():
 
 # Current Balance Function
 def current_balance():
-    # check if file exists
-    balance = 0
+    # check if file exists and maintain running balance when module ends
     if os.path.exists("ledger.txt"):
+        balance = 0
         # create a new file if one does not exist
         with open("ledger.txt", "r") as f:
             # add transactions to leddger balance 
             for line in f:
                 # remove spaces and commas
                 transaction = line.strip().split(",")
-                # add each credit to current balance
+                # add each credit to balance
                 if transaction[0] == "credit":
                     balance += float(transaction[1])
-                    #subtract each debit from current balance
+                #subtract each debit from balance
                 elif transaction[0] == "debit":
                     balance -= float(transaction[1])
                 else:
                     pass
     return balance
+    
     
     
     
@@ -47,7 +47,7 @@ def view_balance():
 # Option 2 add a debit.
 def add_debit():
     amount = input('Enter debit amount')
-    # try and except ensures the module will not close when an errortype occurs
+    # try and except statements ensure the module will not end when an errortype occurs
     try:
         amount = float(amount)
     except ValueError:
@@ -65,7 +65,7 @@ def add_debit():
 # Option 3 add a credit.
 def add_credit():
     amount = input('enter credit amount')
-    # try and except ensures the module will not close when an errortype occurs
+    # try and except statements ensure the module will not close when an errortype occurs
     try:
         amount = float(amount)
     except ValueError:
@@ -83,7 +83,7 @@ def add_credit():
 # Main function
 def main():
     while True:
-        # show user the welcome message and available options
+        # show user the welcome message and available options while module is running
         welcome()
         option = input("Enter your option (1-4): ")
         # option 1 is view balance fucntion
@@ -95,17 +95,18 @@ def main():
             # add credit function
         elif option == "3":
             add_credit()
-            # exit the wihle loop when 4 is entered
+            # exit the while loop when 4 is entered
         elif option == "4":
             print("Goodbye")
             break
             # notify user if input is invalid
         else:
-            print("Invalid input. Please enter a number between 1 and 4.")    
-    # run module
+            return print("Invalid input. Please enter a number between 1 and 4.")    
+    # conditional statement executes module when user runs file name
 if __name__ == "__main__":
     main()
 else:
     pass
     
-
+    
+    
